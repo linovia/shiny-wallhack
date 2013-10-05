@@ -40,9 +40,12 @@ INSTALLED_APPS = (
 
     # project's apps
     'shinywallhack.user',
+    'shinywallhack.theme',
+    'shinywallhack.core',
 
     # 3rd parties
     'south',
+    'django_bootstrap_staticfiles',
 )
 
 MIDDLEWARE_CLASSES = (
