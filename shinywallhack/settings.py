@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'user.User'
 
+INTERNAL_IPS = ('127.0.0.1',)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -47,12 +49,14 @@ INSTALLED_APPS = (
     'south',
     'django_bootstrap_staticfiles',
     'crispy_forms',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
