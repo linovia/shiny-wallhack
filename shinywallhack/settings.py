@@ -47,7 +47,6 @@ INSTALLED_APPS = (
 
     # 3rd parties
     'south',
-    'django_bootstrap_staticfiles',
     'crispy_forms',
     'debug_toolbar',
 )
