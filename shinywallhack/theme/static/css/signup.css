@@ -1,0 +1,14 @@
+
+body {
+    background-image: url('../intro_1500.jpg');
+    /*background: #DDDDDD;*/
+}
+
+.signup {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+}
+
+.control-label {
+    color: #FFF;
+}

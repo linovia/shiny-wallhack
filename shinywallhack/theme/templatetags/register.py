@@ -1,18 +1,19 @@
 from django import template
-from django import forms
 
 from crispy_forms.helper import FormHelper, Layout
-from crispy_forms.layout import Field, Div
+from crispy_forms.layout import Div
 from crispy_forms.bootstrap import StrictButton, InlineField
+
+from shinywallhack.core.forms import RegisterForm
 
 
 register = template.Library()
 
 
-helper = FormHelper()
-helper.form_class = 'form-inline'
+inline_helper = FormHelper()
+inline_helper.form_class = 'form-inline'
 # helper.field_template = 'bootstrap3/layout/inline_field.html'
-helper.layout = Layout(
+inline_helper.layout = Layout(
     InlineField('email', wrapper_class='col-md-3'),
     InlineField('password', wrapper_class='col-md-3'),
     InlineField('domain', wrapper_class='col-md-3'),
@@ -23,15 +24,10 @@ helper.layout = Layout(
 )
 
 
-class RegisterForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
-    domain = forms.CharField()
-
-    helper = helper
-
-
 @register.simple_tag(takes_context=True)
 def register_form(context):
-    context['registration_form'] = RegisterForm()
+    form = RegisterForm()
+    form.helper = helper
+    form.inline_helper = inline_helper
+    context['registration_form'] = form
     return ''
