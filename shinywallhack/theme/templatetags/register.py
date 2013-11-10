@@ -4,7 +4,7 @@ from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Div
 from crispy_forms.bootstrap import StrictButton, InlineField
 
-from shinywallhack.core.forms import RegisterForm
+from shinywallhack.core.forms import RegisterForm, helper
 
 
 register = template.Library()
