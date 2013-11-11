@@ -1,7 +1,9 @@
 
 from django import forms
+from django.contrib.auth import get_user_model
 from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Submit
+from .models import Domain
 
 
 helper = FormHelper()
@@ -21,3 +23,15 @@ class RegisterForm(forms.Form):
     domain = forms.CharField()
 
     helper = helper
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if get_user_model().objects.filter(email=email).exists():
+            raise forms.ValidationError("Email already exists.")
+        return email
+
+    def clean_domain(self):
+        domain = self.cleaned_data['domain']
+        if Domain.objects.filter(domain=domain).exists():
+            raise forms.ValidationError("Domain already used.")
+        return domain
